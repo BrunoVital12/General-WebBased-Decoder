@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decoder Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b4cae7;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: rgb(167, 158, 241);
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Web 64 Decoder</h1>
+    </header>
+    
+    <main>
+        <section id="input">
+            <h2>Input</h2>
+            <textarea id="user-input" placeholder="Insira o texto em Base64 aqui"></textarea>
+            <button onclick="decodeBase64()">Decode</button>
+        </section>
+
+        <section id="output">
+            <h2>Output</h2>
+            <textarea id="Decoded" readonly placeholder="Texto decodificado aparecerá aqui"></textarea>
+        </section>
+
+    </main>
+    
+    <footer>
+        <p> Feito por João Santos, Bruno Oliveira, Bruno Vital</p>
+    </footer>
+
+    <script>
+        function decodeBase64() {
+            const input = document.getElementById('user-input').value;
+            try {
+                const decodedText = atob(input);
+                document.getElementById('Decoded').value = decodedText;
+            } catch (e) {
+                document.getElementById('Decoded').value = 'Erro: Entrada inválida em Base64';
+            }
+        }
+    </script>
+</body>
+</html>
