@@ -13,10 +13,5 @@ Web Decoder is a versatile tool capable of decoding and encoding multiple encryp
 
 To use Web Decoder, simply visit the deployed website and follow the on-screen instructions. Enter the encrypted text you want to decode or encode, select the desired encryption method, and click the corresponding button to perform the action. The decoded or encoded text will be displayed on the screen for easy access.
 
-## Supported Encryption Techniques
-
-- Base64
-- Caesar Cipher
-- (Add more as needed)
 
 
