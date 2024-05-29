@@ -6,7 +6,7 @@ Web Decoder is a versatile tool capable of decoding and encoding multiple encryp
 
 - **Decoding and Encoding:** Supports multiple encryption techniques, allowing users to both decode and encode text.
 - **User-Friendly Interface:** The web interface is designed to be intuitive and easy to use, making it accessible for users of all levels.
-- **Versatility:** Capable of handling various encryption methods, including Base64, Caesar cipher, and more.
+- **Versatility:** Capable of handling various encryption methods, including Base64 and ROT13.
 - **Responsive Design:** The interface is responsive and adapts well to different screen sizes and devices, ensuring a consistent experience for all users.
 
 ## Usage
