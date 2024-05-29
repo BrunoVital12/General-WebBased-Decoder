@@ -8,9 +8,43 @@ body {
     line-height: 1.6;
 }
 
+section #enButton{
+    margin-top: 20px;
+    border-radius: 30px;
+    height: 40px;
+    font-size: medium;
+    font-family:Arial;
+    margin-left: 3px;
+
+}
+button:hover{
+    background-color: #4285f4;
+    color: #ffffff;
+    transition: color 0.2s;
+    transform: scale(1.15);
+}
+
+section #deButton{
+    margin-top: 20px;
+    border-radius: 30px;
+    height: 39px;
+    font-size: medium;
+    font-family:Arial;
+    margin-left: 15px;
+}
+
+section #OutToInput{
+    margin-top: -9px;
+    height: 40px;
+    font-size: medium;
+    font-family:Arial;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
 header {
     background-color: #4285f4; /* Azul */
-    color: #fff;
+    color: #ffffff;
     padding: 20px 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -85,22 +119,6 @@ form textarea {
     height: 150px;
 }
 
-form button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    background-color: #4CAF50; /* Verde */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #45a049; /* Verde mais escuro */
-}
-
 footer {
     background-color: #333;
     color: #fff;
@@ -127,7 +145,7 @@ textarea#user-input {
     box-sizing: border-box;
     font-family: inherit;
 }
-textarea#Decoded {
+textarea#Output {
     width: 100%;
     height: 150px;
     vertical-align: top;

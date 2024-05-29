@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decoder Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -29,7 +30,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>Web 64 Decoder</h1>
@@ -38,30 +38,100 @@
     <main>
         <section id="input">
             <h2>Input</h2>
-            <textarea id="user-input" placeholder="Insira o texto em Base64 aqui"></textarea>
-            <button onclick="decodeBase64()">Decode</button>
+            <textarea id="user-input" placeholder="Insira o texto aqui"></textarea>
+            <br>
+            <button onclick="processDecryption()" id="deButton">Decode</button>
+            <button onclick="processEncryption()" id="deButton">Encode</button>
+            
+            <select id="encryptionType">
+                <option value="base64">Base64</option>
+                <option value="rot13">ROT13</option>
+            </select>
         </section>
 
         <section id="output">
             <h2>Output</h2>
-            <textarea id="Decoded" readonly placeholder="Texto decodificado aparecerá aqui"></textarea>
+            <button onclick="outputToInput()" id="OutToInput"><i class="fas fa-arrow-up"></i></button>
+            <textarea id="Output" readonly placeholder="Resultado aparecerá aqui"></textarea>
         </section>
-
     </main>
     
     <footer>
-        <p> Feito por João Santos, Bruno Oliveira, Bruno Vital</p>
+        <p>Feito por João Santos, Bruno Oliveira, Bruno Vital</p>
     </footer>
 
     <script>
+        function processDecryption() {
+            const input = document.getElementById('user-input').value;
+            const encryptionType = document.getElementById('encryptionType').value;
+            let output;
+            
+            switch(encryptionType) {
+                case 'base64':
+                    output = atob(input);
+                    break;
+                case 'rot13':
+                    output = decodeRot13(input);
+                    break;
+            }
+            
+            document.getElementById('Output').value = output;
+        }
+        
+        function processEncryption() {
+            const input = document.getElementById('user-input').value;
+            const encryptionType = document.getElementById('encryptionType').value;
+            let output;
+            
+            switch(encryptionType) {
+                case 'base64':
+                    output = btoa(input);
+                    break;
+                case 'rot13':
+                    output = encodeRot13(input);
+                    break;
+                default:
+                    output = 'Escolha uma técnica de criptografia válida';
+            }
+            
+            document.getElementById('Output').value = output;
+        }
+        
+        function encodeBase64() {
+            const input = document.getElementById('user-input').value;
+            try {
+                const encodedText = btoa(input);
+                document.getElementById('Output').value = encodedText;
+            } catch (e) {
+                document.getElementById('Output').value = 'Erro: Não foi possível codificar o texto';
+            }
+        }
+
         function decodeBase64() {
             const input = document.getElementById('user-input').value;
             try {
                 const decodedText = atob(input);
-                document.getElementById('Decoded').value = decodedText;
+                document.getElementById('Output').value = decodedText;
             } catch (e) {
-                document.getElementById('Decoded').value = 'Erro: Entrada inválida em Base64';
+                document.getElementById('Output').value = 'Erro: Entrada inválida em Base64';
             }
+        }
+        
+        function encodeRot13(text) {
+            return text.replace(/[a-zA-Z]/g, function(char) {
+                let code = char.charCodeAt(0);
+                let shift = code <= 90 ? 13 : 19;
+                return String.fromCharCode(((code - (code >= 97 ? 97 : 65) + shift) % 26) + (code >= 97 ? 97 : 65));
+            });
+        }
+
+        function decodeRot13(text) {
+            return encodeRot13(text);
+        }
+
+        function outputToInput() {
+            const output = document.getElementById('Output').value;
+            document.getElementById('user-input').value = output;
         }
     </script>
 </body>
